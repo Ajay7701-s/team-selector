@@ -5,8 +5,9 @@
 <title>Team Assignment</title>
 
 <style>
+
 body{
-font-family: Arial;
+font-family: Arial, sans-serif;
 text-align:center;
 background:#f4f6f8;
 margin-top:150px;
@@ -16,7 +17,7 @@ button{
 padding:20px 40px;
 font-size:20px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:#333;
 color:white;
 cursor:pointer;
@@ -25,6 +26,7 @@ cursor:pointer;
 button:hover{
 background:#555;
 }
+
 </style>
 
 </head>
@@ -65,10 +67,11 @@ let team = teams[randomIndex];
 teams.splice(randomIndex,1);
 
 document.getElementById("result").innerText =
-"You are in TEAM "+team+" 🎉";
+"You are in TEAM " + team + " 🎉";
 
 fetch("https://script.google.com/macros/s/AKfycbxgNXq1t0c4bOf2GWpWzksLzY5o-qTojEGOE1WmXKq_e-uobqAnQx5gr1Yyw7FN6qqT/exec",{
 method:"POST",
+mode:"no-cors",
 headers:{
 "Content-Type":"application/json"
 },
