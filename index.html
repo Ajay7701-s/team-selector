@@ -20,6 +20,10 @@ background:#333;
 color:white;
 cursor:pointer;
 }
+
+button:hover{
+background:#555;
+}
 </style>
 
 </head>
@@ -42,18 +46,33 @@ let teams = [
 
 function assignTeam(){
 
+let name = prompt("Enter your name");
+
+if(!name){
+alert("Name required");
+return;
+}
+
 if(teams.length === 0){
 document.getElementById("result").innerText="All teams are full";
 return;
 }
 
 let randomIndex = Math.floor(Math.random()*teams.length);
-
 let team = teams[randomIndex];
 
 teams.splice(randomIndex,1);
 
-document.getElementById("result").innerText="You are in TEAM "+team+" 🎉";
+document.getElementById("result").innerText =
+"You are in TEAM "+team+" 🎉";
+
+fetch("https://script.google.com/macros/s/AKfycbxgNXq1t0c4bOf2GWpWzksLzY5o-qTojEGOE1WmXKq_e-uobqAnQx5gr1Yyw7FN6qqT/exec",{
+method:"POST",
+body:JSON.stringify({
+name:name,
+team:"TEAM "+team
+})
+});
 
 }
 
